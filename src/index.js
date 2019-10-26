@@ -13,6 +13,10 @@ bot.on('ready', () => {
 bot.on('message', msg => {
 	if (msg.content.startsWith('!slap')) {
 		const user = msg.mentions.users.first();
-		msg.channel.send(`${msg.author.username} slaps ${user.username} around a bit with a large trout`);
+		if (!user) {
+			msg.channel.send('No such user');
+		} else {
+			msg.channel.send(`${msg.author.username} slaps ${user.username} around a bit with a large trout`);
+		}
 	}
 });
