@@ -11,5 +11,8 @@ bot.on('ready', () => {
 
 /* Listen to messages */
 bot.on('message', msg => {
-	console.log(msg);
+	if (msg.content.startsWith('!slap')) {
+		const user = msg.mentions.users.first();
+		msg.channel.send(`${msg.author.username} slaps ${user.username} around a bit with a large trout`);
+	}
 });
