@@ -13,5 +13,7 @@ bot.on('ready', () => {
 bot.on('message', msg => {
 	if (msg.content.startsWith('!slap')) {
 		slap(msg);
+	} else if (msg.content.startsWith('!kassa')) {
+		msg.channel.send('Mee nyt vittuun <:tuukka:637021586075025418>');
 	}
 });
