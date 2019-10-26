@@ -1,5 +1,5 @@
-const Discord = require('discord.js');
-const config = require('./config');
+import Discord from 'discord.js';
+import config from './config';
 
 const bot = new Discord.Client();
 
