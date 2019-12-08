@@ -3,6 +3,7 @@
   "plugins": ["prettier"],
   "parser": "babel-eslint",
   "rules": {
-    "prettier/prettier": ["error"]
+    "prettier/prettier": ["error"],
+    "no-param-reassign": "off"
   }
 }
