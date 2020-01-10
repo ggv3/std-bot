@@ -1,4 +1,4 @@
-import Discord from "discord.js";
+import Discord, { Message } from "discord.js";
 import config from "./config";
 import slap from "./slap";
 import axios from "axios";
@@ -32,40 +32,56 @@ bot.on("message", msg => {
   }
 
   if (msg.content.startsWith("!lukemattomat")) {
-    axios
-      .get(`${config.endpoint}/printunread`)
-      .then(response => {
-        const { data } = response;
-        if (data.length === 0) {
-          msg.channel.send("Ei lukemattomia palautteita");
-          return;
-        }
-        gatherFeedback(data)
-          .then(feedback => {
-            msg.channel.send("```" + feedback + "```");
-          })
-          .catch(e => console.log(`error: ${e}`));
-      })
-      .catch(e => console.log(`error: ${e}`));
+    if (
+      msg.member.roles.has(config.roles.admin) ||
+      msg.member.roles.has(config.roles.moderator)
+    ) {
+      axios
+        .get(`${config.endpoint}/printunread`)
+        .then(response => {
+          const { data } = response;
+          if (data.length === 0) {
+            msg.channel.send("Ei lukemattomia palautteita");
+            return;
+          }
+          gatherFeedback(data)
+            .then(feedback => {
+              msg.channel.send("```" + feedback + "```");
+            })
+            .catch(e => console.log(`error: ${e}`));
+        })
+        .catch(e => console.log(`error: ${e}`));
+      return;
+    } else {
+      msg.channel.send(`Väärä rooli, mee nyt vittuun ${config.tuukka}`);
+    }
     return;
   }
 
   if (msg.content.startsWith("!palautteet")) {
-    axios
-      .get(`${config.endpoint}/printall`)
-      .then(response => {
-        const { data } = response;
-        if (data.length === 0) {
-          msg.channel.send("Ei lähetettyjä palautteita");
-          return;
-        }
-        gatherFeedback(data)
-          .then(feedback => {
-            msg.channel.send("```" + feedback + "```");
-          })
-          .catch(e => console.log(`error: ${e}`));
-      })
-      .catch(e => console.log(`error: ${e}`));
+    if (
+      msg.member.roles.has(config.roles.admin) ||
+      msg.member.roles.has(config.roles.moderator)
+    ) {
+      axios
+        .get(`${config.endpoint}/printall`)
+        .then(response => {
+          const { data } = response;
+          if (data.length === 0) {
+            msg.channel.send("Ei lähetettyjä palautteita");
+            return;
+          }
+          gatherFeedback(data)
+            .then(feedback => {
+              msg.channel.send("```" + feedback + "```");
+            })
+            .catch(e => console.log(`error: ${e}`));
+        })
+        .catch(e => console.log(`error: ${e}`));
+      return;
+    } else {
+      msg.channel.send(`Väärä rooli, mee nyt vittuun ${config.tuukka}`);
+    }
     return;
   }
 });
