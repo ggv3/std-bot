@@ -1,19 +1,29 @@
-export default function slap(msg) {
-  const admins = ['GicGer', 'Galloglaich'];
+import axios from 'axios';
+import config from '../config';
 
-  const user = msg.mentions.users.first();
+const restructureFeedback = feedback => {
+  const feedbackArray = [];
+  feedback.forEach(f => {
+    feedbackArray.push(f.text);
+  });
+  return feedbackArray;
+};
 
-  if (!user) {
-    msg.channel.send('No such user');
-  } else {
-    if (msg.author.username === user.username) {
-      msg.channel.send('Stop hitting yourself');
-    } else if (admins.includes(user.username)) {
-      msg.channel.send(`${user.username} is a fine fellow!`);
-    } else {
-      msg.channel.send(
-        `${msg.author.username} slaps ${user.username} around a bit with a large trout`,
-      );
-    }
-  }
-}
+const gatherFeedback = option => {
+  return axios
+    .get(`${config.endpoint}/${option}`)
+    .then(response => {
+      const { data } = response;
+      const feedbackArray = restructureFeedback(data);
+      return feedbackArray;
+    })
+    .catch(e => console.log(`error: ${e}`));
+};
+
+export const getUnreadFeedback = () => {
+  return gatherFeedback('printunread').catch(e => console.log(`error: ${e}`));
+};
+
+export const getAllFeedback = () => {
+  return gatherFeedback('printall').catch(e => console.log(`error: ${e}`));
+};
