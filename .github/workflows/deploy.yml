@@ -2,7 +2,7 @@ name: Deploy
 on:
   push:
     branches:
-      - feature/ci-action
+      - master
 jobs:
   deploy:
     runs-on: self-hosted
