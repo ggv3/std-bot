@@ -15,12 +15,15 @@ jobs:
         npm install
         npm run test
   build:
+    needs: test
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v2
       - uses: actions/setup-node@v1
       - name: Build
         run: |
           echo Running build...
+          npm install
           npm run build
           ls l
         
