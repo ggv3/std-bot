@@ -23,7 +23,6 @@ jobs:
       - name: Build
         run: |
           echo Running build...
-          npm install
           npm run build
           ls l
         
