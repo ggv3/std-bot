@@ -1,7 +1,7 @@
 import axios from 'axios';
 import config from '../config';
 
-const restructureFeedback = feedback => {
+export const restructureFeedback = feedback => {
   const feedbackArray = [];
   feedback.forEach(f => {
     feedbackArray.push(f.text);
