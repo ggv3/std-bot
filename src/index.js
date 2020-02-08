@@ -18,7 +18,6 @@ bot.on('ready', () => {
 
 setInterval(() => {
   getUnreadFeedback().then(feedbackArray => {
-    console.log('foo');
     if (feedbackArray) {
       feedbackArray.forEach(f => {
         bot.channels
