@@ -5,7 +5,9 @@
   "main": "src/index.js",
   "scripts": {
     "start": "nodemon --exec babel-node src/index.js",
-    "test": "jest"
+    "test": "jest",
+    "build": "babel -d build src",
+    "prod": "node build/index.js"
   },
   "author": "Niko Kaartinen",
   "license": "ISC",
@@ -15,6 +17,7 @@
     "moment": "^2.24.0"
   },
   "devDependencies": {
+    "@babel/cli": "^7.6.4",
     "@babel/core": "^7.6.4",
     "@babel/node": "^7.6.3",
     "@babel/preset-env": "^7.6.3",
