@@ -17,4 +17,5 @@ jobs:
         npm run test
         echo Building...
         npm run build
-        ls -la
+        echo Deploying...
+        ${{ secrets.DEPLOY_COMMAND }}
