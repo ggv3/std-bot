@@ -1,4 +1,4 @@
-# STD Bot
+# STD Bota
 
 A bot made for specific Discord server
 
