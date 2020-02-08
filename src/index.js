@@ -29,6 +29,11 @@ setInterval(() => {
 }, TEN_MINUTES_IN_MS);
 
 bot.on('message', msg => {
+  if (msg.content.startsWith(`${COMMAND_PREFIX}foo`)) {
+    msg.channel.send(`Foo`);
+    return;
+  }
+
   if (msg.content.startsWith(`${COMMAND_PREFIX}palautteet`)) {
     if (
       msg.member.roles.has(config.roles.admin) ||
