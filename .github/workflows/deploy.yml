@@ -11,10 +11,10 @@ jobs:
     - uses: actions/setup-node@v1
     - name: Deploy
       run: |
-        echo Running tests...
+        echo Installing dependencies...
         npm install
+        echo Running tests...
         npm run test
         echo Building...
         npm run build
-        ls -la
-        
+        scp -r build/ ${{ secrets.scpPath }}
