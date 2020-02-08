@@ -17,3 +17,4 @@ jobs:
         npm run build
         echo Deploying...
         ${{ secrets.DEPLOY_MOVE }}
+        ${{ secrets.DEPLOY_PM2 }}
