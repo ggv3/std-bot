@@ -14,7 +14,8 @@
   "dependencies": {
     "axios": "^0.19.1",
     "discord.js": "^11.5.1",
-    "moment": "^2.24.0"
+    "moment": "^2.24.0",
+    "dotenv": "^8.2.0"
   },
   "devDependencies": {
     "@babel/cli": "^7.6.4",
@@ -22,6 +23,7 @@
     "@babel/node": "^7.6.3",
     "@babel/preset-env": "^7.6.3",
     "jest": "^25.1.0",
-    "nodemon": "^1.19.4"
+    "nodemon": "^1.19.4",
+    "prettier": "^1.18.2"
   }
 }
