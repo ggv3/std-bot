@@ -1,5 +1,6 @@
 import axios from 'axios';
-import config from '../config';
+
+require('dotenv').config();
 
 export const restructureFeedback = feedback => {
   const feedbackArray = [];
@@ -11,7 +12,7 @@ export const restructureFeedback = feedback => {
 
 const gatherFeedback = option => {
   return axios
-    .get(`${config.endpoint}/${option}`)
+    .get(`${process.env.ENDPOINT}/${option}`)
     .then(response => {
       const { data } = response;
       const feedbackArray = restructureFeedback(data);

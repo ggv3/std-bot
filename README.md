@@ -6,7 +6,7 @@ A bot made for specific Discord server
 
 - [Features](#features)
 - [Requirements](#requirements)
-- [Config.js](#config.js)
+- [Environment variables](#environment-variables)
 - [Dependencies](#dependencies)
 - [Run the bot](#run-the-bot)
   - [Development](#development)
@@ -20,21 +20,17 @@ A bot made for specific Discord server
 
 ### Requirements
 
-### Config.js
+### Environment variables
 
-Your `config.js` file should look like this. Replace curly brace variables with actual values.
+Your `.env` file should look like this. Fill in with actual values
 
-```javascript
-export default {
-  token: '{token}',
-  tuukka: '{correct emote id}',
-  endpoint: '{feedbackService endpoint}',
-  feedbackChannelId: '{channelId for feedbacks}',
-  roles: {
-    admin: '{admin role Id}',
-    moderator: '{moderator role Id}',
-  },
-};
+```
+TOKEN=""
+TUUKKA=""
+ENDPOINT=""
+FEEDBACK_CHANNEL_ID=""
+ROLE_ADMIN=""
+ROLE_MODERATOR=""
 ```
 
 ### Dependencies
