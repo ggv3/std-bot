@@ -18,11 +18,9 @@ const addUserIdToDatabase = userId => {
   });
 };
 
-export const addTwitchUser = async username => {
-  let userId = '';
-  await findUserId(username).then(response => {
+export const addTwitchUser = username => {
+  findUserId(username).then(response => {
     const { id } = response.data.data[0];
-    userId = id;
+    addUserIdToDatabase(id).catch(e => console.log(`error: ${e}`));
   });
-  await addUserIdToDatabase(userId).catch(e => console.log(`error: ${e}`));
 };
