@@ -27,10 +27,12 @@ Your `.env` file should look like this. Fill in with actual values
 ```
 TOKEN=""
 TUUKKA=""
-ENDPOINT=""
+ENDPOINT_FEEDBACK=""
+ENDPOINT_TWITCH=""
 FEEDBACK_CHANNEL_ID=""
 ROLE_ADMIN=""
 ROLE_MODERATOR=""
+CLIENT_ID=""
 ```
 
 ### Dependencies
