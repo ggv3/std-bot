@@ -19,6 +19,7 @@ jobs:
           echo ${{ secrets.ENDPOINT_FEEDBACK }} >> .env
           echo ${{ secrets.ENDPOINT_TWITCH }} >> .env
           echo ${{ secrets.FEEDBACK_CHANNEL_ID }} >> .env
+          echo ${{ secrets.STREAM_CHANNEL_ID }} >> .env
           echo ${{ secrets.ROLE_ADMIN }} >> .env
           echo ${{ secrets.ROLE_MODERATOR }} >> .env
           echo ${{ secrets.CLIENT_ID }} >> .env
