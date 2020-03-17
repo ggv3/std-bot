@@ -52,7 +52,7 @@ export const getStreamStatus = userId => {
 
 export const updateStreamStatus = userId => {
   return axios
-    .post(`https://localhost:3000/twitch-users/updatestreamstatus`, {
+    .post(`${process.env.ENDPOINT_TWITCH}/updatestreamstatus`, {
       userId,
     })
     .catch(e => console.log(`error: ${e}`));
