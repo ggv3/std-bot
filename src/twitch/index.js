@@ -57,5 +57,3 @@ export const updateStreamStatus = userId => {
     })
     .catch(e => console.log(`error: ${e}`));
 };
-
-updatestreamstatus;
