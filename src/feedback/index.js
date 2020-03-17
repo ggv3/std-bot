@@ -12,7 +12,7 @@ export const restructureFeedback = feedback => {
 
 const gatherFeedback = option => {
   return axios
-    .get(`${process.env.ENDPOINT}/${option}`)
+    .get(`${process.env.ENDPOINT_FEEDBACK}/${option}`)
     .then(response => {
       const { data } = response;
       const feedbackArray = restructureFeedback(data);

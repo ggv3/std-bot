@@ -16,10 +16,12 @@ jobs:
           echo Setting environment variables...
           echo ${{ secrets.TOKEN }} >> .env
           echo ${{ secrets.TUUKKA }} >> .env
-          echo ${{ secrets.ENDPOINT }} >> .env
+          echo ${{ secrets.ENDPOINT_FEEDBACK }} >> .env
+          echo ${{ secrets.ENDPOINT_TWITCH }} >> .env
           echo ${{ secrets.FEEDBACK_CHANNEL_ID }} >> .env
           echo ${{ secrets.ROLE_ADMIN }} >> .env
           echo ${{ secrets.ROLE_MODERATOR }} >> .env
+          echo ${{ secrets.CLIENT_ID }} >> .env
           echo Running tests...
           npm test
           echo Building...

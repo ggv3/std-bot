@@ -1,6 +1,7 @@
 import Discord from 'discord.js';
 import slap from './slap';
 import { getUnreadFeedback, getAllFeedback } from './feedback';
+import { addTwitchUser } from './twitch';
 import {
   COMMAND_PREFIX,
   TEN_MINUTES_IN_MS,
@@ -29,6 +30,23 @@ setInterval(() => {
 }, TEN_MINUTES_IN_MS);
 
 bot.on('message', msg => {
+  if (msg.content.startsWith(`${COMMAND_PREFIX}twitch`)) {
+    if (
+      msg.member.roles.has(process.env.ROLE_ADMIN) ||
+      msg.member.roles.has(process.env.ROLE_MODERATOR)
+    ) {
+      try {
+        addTwitchUser(msg.content.substring(8));
+        msg.channel.send(`Käyttäjä tallennettu`);
+      } catch (e) {
+        console.log(`Error: ${e}`);
+      }
+    } else {
+      msg.channel.send(`Väärä rooli, mee nyt vittuun ${process.env.TUUKKA}`);
+    }
+    return;
+  }
+
   if (msg.content.startsWith(`${COMMAND_PREFIX}palautteet`)) {
     if (
       msg.member.roles.has(process.env.ROLE_ADMIN) ||
