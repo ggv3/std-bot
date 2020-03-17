@@ -12,15 +12,16 @@ const findUserId = username => {
     .catch(e => console.log(`error: ${e}`));
 };
 
-const addUserIdToDatabase = userId => {
+const addUserIdToDatabase = (userId, username) => {
   return axios.post(`${process.env.ENDPOINT_TWITCH}/adduser`, {
     userId,
+    username,
   });
 };
 
 export const addTwitchUser = username => {
   findUserId(username).then(response => {
-    const { id } = response.data.data[0];
-    addUserIdToDatabase(id).catch(e => console.log(`error: ${e}`));
+    const { id, login } = response.data.data[0];
+    addUserIdToDatabase(id, login).catch(e => console.log(`error: ${e}`));
   });
 };
