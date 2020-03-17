@@ -1,11 +1,17 @@
 import Discord from 'discord.js';
 import slap from './slap';
 import { getUnreadFeedback, getAllFeedback } from './feedback';
-import { addTwitchUser } from './twitch';
+import {
+  addTwitchUser,
+  getUserIds,
+  getStreamStatus,
+  updateStreamStatus,
+} from './twitch';
 import {
   COMMAND_PREFIX,
   TEN_MINUTES_IN_MS,
   CODE_BLOCK,
+  ONE_MINUTE_IN_MS,
 } from './utils/constants';
 require('dotenv').config();
 
@@ -28,6 +34,34 @@ setInterval(() => {
     }
   });
 }, TEN_MINUTES_IN_MS);
+
+setInterval(() => {
+  getUserIds().then(userArray => {
+    if (userArray) {
+      userArray.forEach(u => {
+        const { userId, username, isOnline } = u;
+        getStreamStatus(userId)
+          .then(response => {
+            // if Online
+            if (response.data.length) {
+              if (!isOnline) {
+                updateStreamStatus(userId).then(() => {
+                  bot.channels
+                    .get(process.env.STREAM_CHANNEL_ID)
+                    .send(`https://twitch.tv/${username}`);
+                });
+              }
+            } else {
+              if (isOnline) {
+                updateStreamStatus(userId);
+              }
+            }
+          })
+          .catch(e => console.log(`error: ${e}`));
+      });
+    }
+  });
+}, ONE_MINUTE_IN_MS);
 
 bot.on('message', msg => {
   if (msg.content.startsWith(`${COMMAND_PREFIX}twitch`)) {

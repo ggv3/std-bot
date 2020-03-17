@@ -25,3 +25,37 @@ export const addTwitchUser = username => {
     addUserIdToDatabase(id, login).catch(e => console.log(`error: ${e}`));
   });
 };
+
+export const getUserIds = () => {
+  return axios
+    .get(`${process.env.ENDPOINT_TWITCH}/getuserids`)
+    .then(response => {
+      const { data } = response;
+      return data;
+    })
+    .catch(e => console.log(`error: ${e}`));
+};
+
+export const getStreamStatus = userId => {
+  return axios
+    .get(`https://api.twitch.tv/helix/streams?user_id=${userId}`, {
+      headers: {
+        'Client-ID': process.env.CLIENT_ID,
+      },
+    })
+    .then(response => {
+      const { data } = response;
+      return data;
+    })
+    .catch(e => console.log(`error: ${e}`));
+};
+
+export const updateStreamStatus = userId => {
+  return axios
+    .post(`https://localhost:3000/twitch-users/updatestreamstatus`, {
+      userId,
+    })
+    .catch(e => console.log(`error: ${e}`));
+};
+
+updatestreamstatus;
