@@ -44,11 +44,12 @@ setInterval(() => {
           .then(response => {
             // if Online
             if (response.data.length) {
+              const { title = '' } = response.data[0];
               if (!isOnline) {
                 updateStreamStatus(userId).then(() => {
                   bot.channels
                     .get(process.env.STREAM_CHANNEL_ID)
-                    .send(`https://twitch.tv/${username}`);
+                    .send(`${title} https://twitch.tv/${username}`);
                 });
               }
             } else {
