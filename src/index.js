@@ -1,6 +1,6 @@
 import Discord from 'discord.js';
 import slap from './slap';
-import { getUnreadFeedback, getAllFeedback } from './feedback';
+import { getUnreadFeedback } from './feedback';
 import {
   addTwitchUser,
   getUserIds,
@@ -39,22 +39,22 @@ setInterval(() => {
   getUserIds().then(userArray => {
     if (userArray) {
       userArray.forEach(u => {
-        const { userId, username, isOnline } = u;
-        getStreamStatus(userId)
+        const { user_id, username, is_online } = u;
+        getStreamStatus(user_id)
           .then(response => {
             // if Online
             if (response.data.length) {
               const { title = '' } = response.data[0];
-              if (!isOnline) {
-                updateStreamStatus(userId).then(() => {
+              if (!is_online) {
+                updateStreamStatus(user_id).then(() => {
                   bot.channels
                     .get(process.env.STREAM_CHANNEL_ID)
                     .send(`${title} https://twitch.tv/${username}`);
                 });
               }
             } else {
-              if (isOnline) {
-                updateStreamStatus(userId);
+              if (is_online) {
+                updateStreamStatus(user_id);
               }
             }
           })
@@ -76,27 +76,6 @@ bot.on('message', msg => {
       } catch (e) {
         console.log(`Error: ${e}`);
       }
-    } else {
-      msg.channel.send(`Väärä rooli, mee nyt vittuun ${process.env.TUUKKA}`);
-    }
-    return;
-  }
-
-  if (msg.content.startsWith(`${COMMAND_PREFIX}palautteet`)) {
-    if (
-      msg.member.roles.has(process.env.ROLE_ADMIN) ||
-      msg.member.roles.has(process.env.ROLE_MODERATOR)
-    ) {
-      getAllFeedback().then(feedbackArray => {
-        console.log(feedbackArray);
-        if (feedbackArray) {
-          feedbackArray.forEach(f => {
-            bot.channels
-              .get(process.env.FEEDBACK_CHANNEL_ID)
-              .send(`${CODE_BLOCK}${f}${CODE_BLOCK}`);
-          });
-        }
-      });
     } else {
       msg.channel.send(`Väärä rooli, mee nyt vittuun ${process.env.TUUKKA}`);
     }
