@@ -18,13 +18,17 @@ const gatherFeedback = option => {
       const feedbackArray = restructureFeedback(data);
       return feedbackArray;
     })
-    .catch(e => console.log(`error: ${e}`));
+    .catch(e => console.log(`gatherFeedback error: ${e}`));
 };
 
 export const getUnreadFeedback = () => {
-  return gatherFeedback('printunread').catch(e => console.log(`error: ${e}`));
+  return gatherFeedback('printunread').catch(e =>
+    console.log(`getUnreadFeedback error: ${e}`),
+  );
 };
 
 export const getAllFeedback = () => {
-  return gatherFeedback('printall').catch(e => console.log(`error: ${e}`));
+  return gatherFeedback('printall').catch(e =>
+    console.log(`getAllFeedback error: ${e}`),
+  );
 };

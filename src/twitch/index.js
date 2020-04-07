@@ -9,7 +9,7 @@ const findUserId = username => {
         'Client-ID': process.env.CLIENT_ID,
       },
     })
-    .catch(e => console.log(`error: ${e}`));
+    .catch(e => console.log(`findUserId error: ${e}`));
 };
 
 const addUserIdToDatabase = (userId, username) => {
@@ -22,7 +22,9 @@ const addUserIdToDatabase = (userId, username) => {
 export const addTwitchUser = username => {
   findUserId(username).then(response => {
     const { id, login } = response.data.data[0];
-    addUserIdToDatabase(id, login).catch(e => console.log(`error: ${e}`));
+    addUserIdToDatabase(id, login).catch(e =>
+      console.log(`addTwitchUser error: ${e}`),
+    );
   });
 };
 
@@ -33,7 +35,7 @@ export const getUserIds = () => {
       const { data } = response;
       return data;
     })
-    .catch(e => console.log(`error: ${e}`));
+    .catch(e => console.log(`getUserIds error: ${e}`));
 };
 
 export const getStreamStatus = userId => {
@@ -47,7 +49,7 @@ export const getStreamStatus = userId => {
       const { data } = response;
       return data;
     })
-    .catch(e => console.log(`error: ${e}`));
+    .catch(e => console.log(`getStreamStatus error: ${e}`));
 };
 
 export const updateStreamStatus = userId => {
@@ -55,5 +57,5 @@ export const updateStreamStatus = userId => {
     .post(`${process.env.ENDPOINT_TWITCH}/updatestreamstatus`, {
       userId,
     })
-    .catch(e => console.log(`error: ${e}`));
+    .catch(e => console.log(`updateStreamStatus error: ${e}`));
 };

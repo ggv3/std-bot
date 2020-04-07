@@ -58,7 +58,7 @@ setInterval(() => {
               }
             }
           })
-          .catch(e => console.log(`error: ${e}`));
+          .catch(e => console.log(`getStreamStatus error: ${e}`));
       });
     }
   });
