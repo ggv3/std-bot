@@ -6,9 +6,17 @@ export default {
   usage: '!slap',
   description: 'Slap user with a trout',
   execute: ({ msg }) => {
-    const { channel, guild, author } = msg;
+    const {
+      channel = {},
+      guild: {
+        roles: { cache: roleCache = [] } = {},
+        members: { cache: memberCache = [] } = {},
+        channels: { cache: channelCache = [] } = {},
+      } = {},
+      author = {},
+    } = msg || {};
     if (channel.type === 'dm') return;
-    const protectedMembers = getProtectedMembers(guild);
+    const protectedMembers = getProtectedMembers(roleCache, memberCache);
     const user = msg.mentions.users.first();
     if (!user) {
       msg.channel.send('No such user');
@@ -19,8 +27,6 @@ export default {
     } else {
       msg.channel.send(`${author.username} slaps ${user.username} around a bit with a large trout`);
     }
-    guild.channels.cache
-      .get(process.env.BOT_SPAM_CHANNEL_ID)
-      .send(`User: ${author.username} used command !slap`);
+    channelCache.get(process.env.BOT_SPAM_CHANNEL_ID).send(`User: ${author.username} used command !slap`);
   },
 };
