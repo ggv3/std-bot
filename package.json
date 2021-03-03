@@ -1,29 +1,116 @@
 {
   "name": "std-bot",
-  "version": "1.1.0",
-  "description": "STD bot for Discord",
+  "version": "0.0.0",
+  "description": "Discord bot for specific server",
   "main": "src/index.js",
   "scripts": {
     "start": "nodemon --exec babel-node src/index.js",
-    "test": "jest",
+    "test": "jest --verbose --coverage",
+    "lint": "eslint",
+    "lint:fix": "eslint --fix",
+    "postinstall": "husky install",
+    "release": "release-it --ci",
     "build": "babel -d build src",
     "prod": "node build/index.js"
   },
   "author": "Niko Kaartinen",
   "license": "ISC",
   "dependencies": {
-    "axios": "^0.19.2",
-    "discord.js": "^11.6.2",
+    "discord.js": "^12.5.1",
     "dotenv": "^8.2.0",
-    "moment": "^2.24.0"
+    "make-promises-safe": "^5.1.0"
   },
   "devDependencies": {
-    "@babel/cli": "^7.6.4",
-    "@babel/core": "^7.8.7",
-    "@babel/node": "^7.8.7",
-    "@babel/preset-env": "^7.8.7",
-    "jest": "^25.1.0",
-    "nodemon": "^1.19.4",
-    "prettier": "^1.18.2"
+    "@babel/cli": "^7.13.0",
+    "@babel/core": "^7.13.1",
+    "@babel/node": "^7.13.0",
+    "@babel/preset-env": "^7.13.5",
+    "@release-it/conventional-changelog": "^2.0.1",
+    "@types/jest": "^26.0.20",
+    "cz-conventional-changelog": "^3.3.0",
+    "eslint": "^7.20.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-prettier": "^3.3.1",
+    "husky": "^5.1.1",
+    "jest": "^26.6.3",
+    "nodemon": "^2.0.7",
+    "prettier": "^2.2.1",
+    "release-it": "^14.4.1"
+  },
+  "jest": {
+    "coverageThreshold": {
+      "./src/": {
+        "functions": 70,
+        "lines": 70,
+        "statements": 70
+      }
+    }
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog",
+      "disableScopeLowerCase": true,
+      "types": {
+        "feat": {
+          "description": "A new feature",
+          "title": "Features"
+        },
+        "fix": {
+          "description": "A bug fix",
+          "title": "Fixes"
+        },
+        "test": {
+          "description": "Add missing tests or correcting existing tests",
+          "title": "Tests"
+        },
+        "chore": {
+          "description": "Other changes that don't modify src or test files",
+          "title": "Chores"
+        }
+      }
+    }
+  },
+  "release-it": {
+    "git": {
+      "requireCleanWorkingDir": false
+    },
+    "npm": {
+      "publish": false
+    },
+    "github": {
+      "release": true
+    },
+    "gitlab": {
+      "release": false
+    },
+    "plugins": {
+      "@release-it/conventional-changelog": {
+        "infile": "CHANGELOG.md",
+        "preset": {
+          "name": "conventionalcommits",
+          "types": [
+            {
+              "type": "feat",
+              "section": "Features"
+            },
+            {
+              "type": "fix",
+              "section": "Bug Fixes"
+            },
+            {
+              "type": "test",
+              "section": "Tests",
+              "hidden": false
+            },
+            {
+              "type": "chore",
+              "section": "Chores",
+              "hidden": false
+            }
+          ]
+        }
+      }
+    }
   }
 }

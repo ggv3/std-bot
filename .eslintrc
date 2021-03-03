@@ -1,9 +1,51 @@
 {
-  "extends": ["airbnb-base", "prettier"],
+  "env": {
+    "es6": true,
+    "node": true,
+    "jest": true
+  },
+  "extends": ["airbnb-base"],
   "plugins": ["prettier"],
-  "parser": "babel-eslint",
+  "globals": {
+    "Atomics": "readonly",
+    "SharedArrayBuffer": "readonly"
+  },
+  "parserOptions": {
+    "ecmaVersion": 2018
+  },
   "rules": {
-    "prettier/prettier": ["error"],
-    "no-param-reassign": "off"
+    "camelcase": 0,
+    "operator-linebreak": ["error", "after"],
+    "implicit-arrow-linebreak": ["off", "below"],
+    "no-nested-ternary": "warn",
+    "no-unused-vars": [
+      "error",
+      {
+        "vars": "all",
+        "args": "all",
+        "varsIgnorePattern": "rest",
+        "ignoreRestSiblings": true
+      }
+    ],
+    "object-curly-newline": 0,
+    "import/no-extraneous-dependencies": [
+      "error",
+      {
+        "optionalDependencies": false,
+        "peerDependencies": false
+      }
+    ],
+    "import/prefer-default-export": 0,
+    "no-shadow": [2, { "builtinGlobals": false, "hoist": "all", "allow": [] }],
+    "no-useless-rename": [
+      "error",
+      {
+        "ignoreDestructuring": false,
+        "ignoreImport": false,
+        "ignoreExport": false
+      }
+    ],
+    "arrow-parens": "off",
+    "no-console": "off"
   }
 }
