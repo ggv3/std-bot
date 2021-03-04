@@ -1,3 +1,10 @@
+### [0.2.2](https://github.com/kaartni/std-bot/compare/0.2.1...0.2.2) (2021-03-04)
+
+
+### Bug Fixes
+
+* **slap:** apply truth check to array length instead of array ([#25](https://github.com/kaartni/std-bot/issues/25)) ([ff65153](https://github.com/kaartni/std-bot/commit/ff65153594202ccb0a19db2ed0dbb2b4e0734742))
+
 ### [0.2.1](https://github.com/kaartni/std-bot/compare/0.2.0...0.2.1) (2021-03-04)
 
 
