@@ -1,5 +1,7 @@
 # STD Bot
 
+[![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
+
 A bot made for specific Discord server
 
 ## Table of contents
@@ -15,8 +17,6 @@ A bot made for specific Discord server
 ### Features
 
 - Slapping users with a trout
-- Show enormours disappointment with a simple command
-- Automatic feedback polling from a separate REST API and printing it to specific channel
 
 ### Requirements
 
@@ -26,13 +26,7 @@ Your `.env` file should look like this. Fill in with actual values
 
 ```
 TOKEN=""
-TUUKKA=""
-ENDPOINT_FEEDBACK=""
-ENDPOINT_TWITCH=""
-FEEDBACK_CHANNEL_ID=""
-ROLE_ADMIN=""
-ROLE_MODERATOR=""
-CLIENT_ID=""
+BOT_SPAM_CHANNEL_ID=""
 ```
 
 ### Dependencies
