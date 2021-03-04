@@ -1,6 +1,6 @@
 {
   "name": "std-bot",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Discord bot for specific server",
   "main": "src/index.js",
   "scripts": {
