@@ -1,4 +1,6 @@
 import { Client, Collection } from 'discord.js';
+import Knex from 'knex';
+import knexfile from './knexfile';
 import { PREFIX } from './utils/constants';
 import { parseCommand } from './utils';
 import commands from './commands';
@@ -6,8 +8,8 @@ import commands from './commands';
 require('dotenv').config();
 require('make-promises-safe');
 
+const knex = Knex(knexfile);
 const moduleNames = ['general'];
-
 const bot = new Client();
 bot.commands = new Collection();
 
@@ -17,6 +19,7 @@ commands.forEach(cmd => {
 
 bot.on('ready', () => {
   console.info(`Logged in as ${bot.user.tag}!`);
+  knex.migrate.latest();
 });
 
 bot.on('message', msg => {
@@ -28,7 +31,7 @@ bot.on('message', msg => {
     bot.commands.get(commandName) ||
     bot.commands.find(cmd => cmd.aliases && cmd.aliases.includes(commandName));
   if (!command) return;
-  command.execute(parsedCommand);
+  command.execute(parsedCommand, bot);
 });
 
 bot.on('error', e => {
