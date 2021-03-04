@@ -1,3 +1,10 @@
+## [0.2.0](https://github.com/kaartni/std-bot/compare/0.1.2...0.2.0) (2021-03-04)
+
+
+### Features
+
+* **feedback:** add feedback functionality ([#23](https://github.com/kaartni/std-bot/issues/23)) ([76cf62f](https://github.com/kaartni/std-bot/commit/76cf62f90ab902dfc73de28cadde2e73bf12fd32))
+
 ### [0.1.2](https://github.com/kaartni/std-bot/compare/0.1.1...0.1.2) (2021-03-04)
 
 
