@@ -1,3 +1,10 @@
+### [0.1.2](https://github.com/kaartni/std-bot/compare/0.1.1...0.1.2) (2021-03-04)
+
+
+### Bug Fixes
+
+* **slap:** fix a bug where every member was protected from slap ([#22](https://github.com/kaartni/std-bot/issues/22)) ([3364a2d](https://github.com/kaartni/std-bot/commit/3364a2ded58bb2d99d57729ce86f24740292dd36))
+
 ### [0.1.1](https://github.com/kaartni/std-bot/compare/0.1.0...0.1.1) (2021-03-04)
 
 
