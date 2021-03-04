@@ -22,11 +22,11 @@ export default {
       msg.channel.send('No such user');
     } else if (msg.author.username === user.username) {
       msg.channel.send('Stop hitting yourself');
-    } else if (protectedMembers.filter(pr => pr.user.username === user.username)) {
+    } else if (!protectedMembers.filter(pr => pr.user.username === user.username)) {
       msg.channel.send(`${user.username} is a fine fellow!`);
     } else {
       msg.channel.send(`${author.username} slaps ${user.username} around a bit with a large trout`);
     }
-    channelCache.get(process.env.BOT_SPAM_CHANNEL_ID).send(`User: ${author.username} used command !slap`);
+    channelCache.get(process.env.BOT_SPAM_CHANNEL_ID).send(`User: ${author.username} used command: !slap`);
   },
 };
