@@ -1,3 +1,10 @@
+### [0.2.1](https://github.com/kaartni/std-bot/compare/0.2.0...0.2.1) (2021-03-04)
+
+
+### Bug Fixes
+
+* **feedback:** fix a bug where app would crash if feedback was too long ([#24](https://github.com/kaartni/std-bot/issues/24)) ([8432d2b](https://github.com/kaartni/std-bot/commit/8432d2b84cf56803ad0040b89c798c89fb24f00b))
+
 ## [0.2.0](https://github.com/kaartni/std-bot/compare/0.1.2...0.2.0) (2021-03-04)
 
 
