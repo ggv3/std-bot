@@ -1,0 +1,27 @@
+version: '3.6'
+services:
+  postgres:
+    image: postgres:13-alpine
+    restart: always
+    ports:
+      - '5432:5432'
+    volumes:
+      - db_data:/var/lib/postgresql/data
+    command: postgres -c max_locks_per_transaction=2000
+    environment:
+      POSTGRES_PASSWORD: vaihdatama
+  bot:
+    build: ./
+    environment:
+      TOKEN: token
+      BOT_SPAM_CHANNEL_ID: 1111111111
+      FEEDBACK_CHANNEL_ID: 1111111111
+      DB_USER: postgres
+      DB_NAME: postgres
+      DB_PASSWORD: vaihdatama
+      DB_HOST: postgres
+    depends_on:
+      - postgres
+volumes:
+  db_data:
+  data:
