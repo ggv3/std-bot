@@ -1,3 +1,10 @@
+### [0.3.3](https://github.com/ggv3/std-bot/compare/0.3.2...0.3.3) (2021-03-06)
+
+
+### Bug Fixes
+
+* fix a bug where logger printed wrong command when !kassa was used ([#29](https://github.com/ggv3/std-bot/issues/29)) ([200c3d3](https://github.com/ggv3/std-bot/commit/200c3d37692d56698801a5f7796d2c6906dad27a))
+
 ### [0.3.2](https://github.com/ggv3/std-bot/compare/0.3.1...0.3.2) (2021-03-06)
 
 ### [0.3.1](https://github.com/ggv3/std-bot/compare/0.3.0...0.3.1) (2021-03-06)
