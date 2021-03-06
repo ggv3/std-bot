@@ -1,3 +1,10 @@
+## [0.3.0](https://github.com/ggv3/std-bot/compare/0.2.2...0.3.0) (2021-03-06)
+
+
+### Features
+
+* add a feature to express massive disappointment to the situation ([#26](https://github.com/ggv3/std-bot/issues/26)) ([823b9eb](https://github.com/ggv3/std-bot/commit/823b9ebf3c3bf633a2150815c0400b661862278d))
+
 ### [0.2.2](https://github.com/kaartni/std-bot/compare/0.2.1...0.2.2) (2021-03-04)
 
 
