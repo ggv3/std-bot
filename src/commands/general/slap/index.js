@@ -1,4 +1,4 @@
-import { pickRandomReply } from './helpers';
+import { pickRandomReply, getUserDisplayName } from './helpers';
 
 export default {
   name: 'slap',
@@ -8,7 +8,11 @@ export default {
   execute: ({ msg }) => {
     const {
       channel = {},
-      guild: { emojis = {}, channels: { cache: channelCache = [] } = {} } = {},
+      guild: {
+        emojis = {},
+        channels: { cache: channelCache = [] } = {},
+        members: { cache: memberCache = [] } = {},
+      } = {},
       author = {},
     } = msg || {};
     if (channel.type === 'dm') return;
@@ -20,7 +24,12 @@ export default {
     } else if (user.bot) {
       channel.send(`${pickRandomReply()} ${emojis.cache.find(e => e.name === 'STDTuukka')}`);
     } else {
-      channel.send(`${author.username} slaps ${user.username} around a bit with a large trout`);
+      channel.send(
+        `${getUserDisplayName(memberCache, author.username)} slaps ${getUserDisplayName(
+          memberCache,
+          user.username,
+        )} around a bit with a large trout`,
+      );
     }
     channelCache
       .get(process.env.BOT_SPAM_CHANNEL_ID)
