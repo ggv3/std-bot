@@ -13,6 +13,6 @@ export default {
     msg.channel.send(`Mee nyt vittuun ${emojis.cache.find(e => e.name === 'STDTuukka')}`);
     channelCache
       .get(process.env.BOT_SPAM_CHANNEL_ID)
-      .send(`User: ${author.username} used command: !slap`);
+      .send(`User: ${author.username} used command: !kassa`);
   },
 };
